@@ -28,8 +28,12 @@ public class HotelController {
     }
 
     @GetMapping("/location/{location}")
-    public List<Hotel> getHotelsByLocation(@PathVariable String location) {
-        return hotelService.getHotelsByLocation(location);
+    public ResponseEntity<List<Hotel>> getHotelsByLocation(@PathVariable String location) {
+        List<Hotel> hotels = hotelService.getHotelsByLocation(location);
+        if (hotels.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(hotels);
     }
 
     @GetMapping("/stars/{stars}")
@@ -49,6 +53,7 @@ public class HotelController {
         return hotelService.getHotelsByLocationAndStars(location, stars);
     }
 
+    /*
     @PostMapping
     public Hotel createHotel(@RequestBody Hotel hotel) {
         return hotelService.saveHotel(hotel);
@@ -70,5 +75,5 @@ public class HotelController {
     public ResponseEntity<Void> deleteHotel(@PathVariable String id) {
         hotelService.deleteHotel(id);
         return ResponseEntity.ok().build();
-    }
+    }*/
 } 

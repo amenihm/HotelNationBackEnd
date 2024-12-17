@@ -37,11 +37,11 @@ public class HotelService {
         return hotelRepository.findByLocationAndStars(location, stars);
     }
     
-    public Hotel saveHotel(Hotel hotel) {
+   /* public Hotel saveHotel(Hotel hotel) {
         return hotelRepository.save(hotel);
     }
     
-    public void deleteHotel(String id) {
+  /*  public void deleteHotel(String id) {
         hotelRepository.deleteById(id);
-    }
+    }*/
 } 
