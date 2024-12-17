@@ -7,6 +7,6 @@ import java.util.List;
 public interface HotelRepository extends MongoRepository<Hotel, String> {
     List<Hotel> findByLocation(String location);
     List<Hotel> findByStars(String stars);
-    List<Hotel> findByPriceLessThanEqual(String price);
+    List<Hotel> findByPriceLessThanEqual(Double price);
     List<Hotel> findByLocationAndStars(String location, String stars);
 } 

@@ -42,8 +42,12 @@ public class HotelController {
     }
 
     @GetMapping("/price/{maxPrice}")
-    public List<Hotel> getHotelsByMaxPrice(@PathVariable String maxPrice) {
-        return hotelService.getHotelsByMaxPrice(maxPrice);
+    public ResponseEntity<List<Hotel>> getHotelsByMaxPrice(@PathVariable String maxPrice) {
+        List<Hotel> hotels = hotelService.getHotelsByMaxPrice(maxPrice);
+        if (hotels.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(hotels);
     }
 
     @GetMapping("/search")
